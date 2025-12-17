@@ -1,0 +1,45 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum ResearchDomain {
+  Computer_Science
+  Biology
+  Physics
+  Chemistry
+  Mathematics
+  Social_Sciences
+}
+
+enum ReadingStage {
+  Abstract_Read
+  Introduction_Done
+  Methodology_Done
+  Results_Analyzed
+  Fully_Read
+  Notes_Completed
+}
+
+enum ImpactScore {
+  High_Impact
+  Medium_Impact
+  Low_Impact
+  Unknown
+}
+
+model Paper {
+  id             String         @id @default(uuid())
+  paperTitle     String
+  firstAuthor    String
+  researchDomain ResearchDomain
+  readingStage   ReadingStage
+  citationCount  Int            @default(0)
+  impactScore    ImpactScore
+  dateAdded      DateTime       @default(now())
+  createdAt      DateTime       @default(now())
+}
