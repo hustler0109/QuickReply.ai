@@ -1,0 +1,15 @@
+﻿# Node
+node_modules/
+npm-debug.log*
+package-lock.json
+
+# Env
+.env
+
+# Build
+dist/
+.vite/
+
+# OS
+.DS_Store
+Thumbs.db
