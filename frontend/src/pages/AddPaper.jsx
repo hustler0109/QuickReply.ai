@@ -72,13 +72,10 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { motion } from "framer-motion";
 import { fadeUp } from "../utils/animations";
-import {
-  domainMap,
-  stageMap,
-  impactMap,
-} from "./utils/enumMapper";
+import { domainMap, stageMap, impactMap } from "./utils/enumMapper";
 
-const API = import.meta.env.VITE_API_URL + "/api/papers";
+// Same backend API as Library.jsx
+const API = "http://localhost:5000/api/papers";
 
 export default function AddPaper() {
   const [form, setForm] = useState({

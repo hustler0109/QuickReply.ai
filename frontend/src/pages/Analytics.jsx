@@ -282,7 +282,8 @@ import {
   Legend,
 } from "recharts";
 
-const API = import.meta.env.VITE_API_URL + "/api/analytics";
+// Match backend Express API on port 5000
+const API = "http://localhost:5000/api/analytics";
 const format = (v) => v?.replaceAll("_", " ");
 
 export default function Analytics() {
