@@ -68,14 +68,17 @@
 //   );
 // }
 
-
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { domainMap } from "./utils/enumMapper";
 import { motion } from "framer-motion";
-import { fadeUp } from "../animations";
+import { fadeUp } from "../utils/animations";
+import {
+  domainMap,
+  stageMap,
+  impactMap,
+} from "./utils/enumMapper";
 
-const API = "http://localhost:5000/api/papers";
+const API = import.meta.env.VITE_API_URL + "/api/papers";
 
 export default function AddPaper() {
   const [form, setForm] = useState({
@@ -91,38 +94,44 @@ export default function AddPaper() {
   const submit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch(API, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
-    });
+    try {
+      const res = await fetch(API, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
 
-    if (!res.ok) {
+      if (!res.ok) throw new Error();
+
+      toast.success("Paper added successfully");
+      setForm({
+        paperTitle: "",
+        firstAuthor: "",
+        researchDomain: "Computer_Science",
+        readingStage: "Abstract_Read",
+        citationCount: 0,
+        impactScore: "Unknown",
+        dateAdded: "",
+      });
+    } catch {
       toast.error("Failed to add paper");
-      return;
     }
-
-    toast.success("Paper added successfully");
-    e.target.reset();
   };
-<motion.div
-  variants={fadeUp}
-  initial="hidden"
-  animate="visible"
-  className="max-w-xl bg-white dark:bg-gray-800 shadow rounded-lg p-6"
->
-  <h2 className="text-xl font-semibold mb-4">Add Research Paper</h2>
-  {/* form */}
-</motion.div>
 
   return (
-    <div className="max-w-xl bg-white dark:bg-gray-800 p-6 rounded shadow">
+    <motion.div
+      variants={fadeUp}
+      initial="hidden"
+      animate="visible"
+      className="max-w-xl bg-white dark:bg-gray-800 shadow rounded-lg p-6"
+    >
       <h2 className="text-xl font-semibold mb-4">Add Research Paper</h2>
 
       <form className="space-y-3" onSubmit={submit}>
         <input
           className="w-full border p-2 rounded"
           placeholder="Paper Title"
+          value={form.paperTitle}
           onChange={(e) =>
             setForm({ ...form, paperTitle: e.target.value })
           }
@@ -132,41 +141,39 @@ export default function AddPaper() {
         <input
           className="w-full border p-2 rounded"
           placeholder="First Author"
+          value={form.firstAuthor}
           onChange={(e) =>
             setForm({ ...form, firstAuthor: e.target.value })
           }
           required
         />
 
+        {/* Research Domain */}
         <select
           className="w-full border p-2 rounded"
+          value={form.researchDomain}
           onChange={(e) =>
             setForm({ ...form, researchDomain: e.target.value })
           }
         >
-          {Object.keys(domainMap).map((d) => (
-            <option key={d} value={d}>
-              {domainMap[d]}
+          {Object.entries(domainMap).map(([key, label]) => (
+            <option key={key} value={key}>
+              {label}
             </option>
           ))}
         </select>
 
+        {/* Reading Stage */}
         <select
           className="w-full border p-2 rounded"
+          value={form.readingStage}
           onChange={(e) =>
             setForm({ ...form, readingStage: e.target.value })
           }
         >
-          {[
-            "Abstract_Read",
-            "Introduction_Done",
-            "Methodology_Done",
-            "Results_Analyzed",
-            "Fully_Read",
-            "Notes_Completed",
-          ].map((s) => (
-            <option key={s} value={s}>
-              {s.replaceAll("_", " ")}
+          {Object.entries(stageMap).map(([key, label]) => (
+            <option key={key} value={key}>
+              {label}
             </option>
           ))}
         </select>
@@ -175,29 +182,31 @@ export default function AddPaper() {
           type="number"
           className="w-full border p-2 rounded"
           placeholder="Citation Count"
+          value={form.citationCount}
           onChange={(e) =>
             setForm({ ...form, citationCount: Number(e.target.value) })
           }
         />
 
+        {/* Impact Score */}
         <select
           className="w-full border p-2 rounded"
+          value={form.impactScore}
           onChange={(e) =>
             setForm({ ...form, impactScore: e.target.value })
           }
         >
-          {["High_Impact", "Medium_Impact", "Low_Impact", "Unknown"].map(
-            (i) => (
-              <option key={i} value={i}>
-                {i.replaceAll("_", " ")}
-              </option>
-            )
-          )}
+          {Object.entries(impactMap).map(([key, label]) => (
+            <option key={key} value={key}>
+              {label}
+            </option>
+          ))}
         </select>
 
         <input
           type="date"
           className="w-full border p-2 rounded"
+          value={form.dateAdded}
           onChange={(e) =>
             setForm({ ...form, dateAdded: e.target.value })
           }
@@ -208,6 +217,6 @@ export default function AddPaper() {
           Add Paper
         </button>
       </form>
-    </div>
+    </motion.div>
   );
 }

@@ -22,7 +22,6 @@
 //   );
 // }
 
-
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import Layout from "./components/Layout";
@@ -39,6 +38,7 @@ function AnimatedRoutes() {
         <Route path="/" element={<Library />} />
         <Route path="/add" element={<AddPaper />} />
         <Route path="/analytics" element={<Analytics />} />
+        <Route path="*" element={<div className="p-6">Page Not Found</div>} />
       </Routes>
     </AnimatePresence>
   );
