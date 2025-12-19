@@ -1,3 +1,4 @@
+
 {
   "name": "research-paper-tracker-frontend",
   "private": true,
@@ -13,7 +14,7 @@
     "clsx": "^2.1.1",
     "framer-motion": "^11.18.2",
     "html2canvas": "^1.4.1",
-    "jspdf": "^2.5.3",
+    "jspdf": "^2.5.1",
     "jspdf-autotable": "^3.8.2",
     "lucide-react": "^0.561.0",
     "react": "^18.3.1",

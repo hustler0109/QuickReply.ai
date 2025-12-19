@@ -1,9 +1,21 @@
-// import React from "react";
-// import ReactDOM from "react-dom/client";
-// import App from "./App";
-// ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+// // import React from "react";
+// // import ReactDOM from "react-dom/client";
+// // import App from "./App";
+// // ReactDOM.createRoot(document.getElementById("root")).render(<App />);
 
-// import React from "react";
+// // import React from "react";
+// // import ReactDOM from "react-dom/client";
+// // import { Toaster } from "react-hot-toast";
+// // import App from "./App";
+// // import "./index.css";
+
+// // ReactDOM.createRoot(document.getElementById("root")).render(
+// //   <React.StrictMode>
+// //     <Toaster position="top-right" />
+// //     <App />
+// //   </React.StrictMode>
+// // );
+
 // import ReactDOM from "react-dom/client";
 // import { Toaster } from "react-hot-toast";
 // import App from "./App";
@@ -11,11 +23,21 @@
 
 // ReactDOM.createRoot(document.getElementById("root")).render(
 //   <React.StrictMode>
-//     <Toaster position="top-right" />
+//     <Toaster
+//       position="top-right"
+//       toastOptions={{
+//         style: {
+//           background: "var(--toast-bg, #fff)",
+//           color: "var(--toast-text, #000)",
+//         },
+//       }}
+//     />
 //     <App />
 //   </React.StrictMode>
 // );
 
+
+import React from "react";                // ✅ REQUIRED
 import ReactDOM from "react-dom/client";
 import { Toaster } from "react-hot-toast";
 import App from "./App";
