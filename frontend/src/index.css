@@ -5,6 +5,8 @@
 body {
   font-family: system-ui, sans-serif;
 } */
+
+/* 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -17,4 +19,52 @@ body,
 
 body {
   font-family: system-ui, sans-serif;
+} */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================
+   Base layout
+   ========================= */
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+}
+
+/* =========================
+   Dark mode form controls
+   ========================= */
+
+/* Inputs, selects, textareas */
+.dark input,
+.dark select,
+.dark textarea {
+  background-color: #1f2937; /* gray-800 */
+  color: #ffffff;
+  border-color: #4b5563; /* gray-600 */
+}
+
+/* Placeholder text */
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #9ca3af; /* gray-400 */
+}
+
+/* Select dropdown options */
+.dark select option {
+  background-color: #1f2937;
+  color: #ffffff;
+}
+
+/* Buttons */
+.dark button {
+  background-color: #ffffff;
+  color: #000000;
 }
