@@ -1,38 +1,3 @@
-
-// {
-//   "name": "research-paper-tracker-frontend",
-//   "private": true,
-//   "version": "1.0.0",
-//   "type": "module",
-//   "scripts": {
-//     "dev": "vite",
-//     "build": "vite build",
-//     "preview": "vite preview"
-//   },
-//   "dependencies": {
-//     "@supabase/supabase-js": "^2.88.0",
-//     "clsx": "^2.1.1",
-//     "framer-motion": "^11.18.2",
-//     "html2canvas": "^1.4.1",
-//     "jspdf": "^2.5.1",
-//     "jspdf-autotable": "^3.8.2",
-//     "lucide-react": "^0.561.0",
-//     "react": "^18.3.1",
-//     "react-dom": "^18.3.1",
-//     "react-hot-toast": "^2.6.0",
-//     "react-router-dom": "^6.30.2",
-//     "recharts": "^2.15.4"
-//   },
-//   "devDependencies": {
-//     "@vitejs/plugin-react": "^4.2.1",
-//     "autoprefixer": "^10.4.23",
-//     "postcss": "^8.5.6",
-//     "tailwindcss": "^3.4.19",
-//     "vite": "^5.1.4",
-//     "serve": "^14.2.4"
-//   }
-// }
-
 {
   "name": "research-paper-tracker-frontend",
   "private": true,
@@ -40,8 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "start": "serve -s dist -l $PORT"
+    "build": "vite build"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.88.0",
@@ -62,7 +26,6 @@
     "autoprefixer": "^10.4.23",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.19",
-    "vite": "^5.1.4",
-    "serve": "^14.2.4"
+    "vite": "^5.1.4"
   }
 }
